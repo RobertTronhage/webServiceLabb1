@@ -21,4 +21,16 @@ public class PersonService {
         personRepo.save(person);
     }
 
+    public List<Person> searchByAge(int age) {
+        return personRepo.findByAge(age);
+    }
+
+    public List<Person> searchByName(String name) {
+        return personRepo.findByNameContainingIgnoreCase(name);
+    }
+
+    public List<Person> searchByCity(String city) {
+        return personRepo.findByCityContainingIgnoreCase(city);
+    }
+
 }
