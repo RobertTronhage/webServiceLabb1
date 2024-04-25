@@ -59,4 +59,8 @@ public class PersonController {
         return ResponseEntity.ok().build();
     }
 
+    @DeleteMapping("/rs/delete/{id}")
+    public ResponseEntity<?> deletePerson(@PathVariable Long id) {
+        return personService.deletePerson(id);
+    }
 }

@@ -18,4 +18,6 @@ public interface PersonRepo extends JpaRepository <Person,Integer> {
     List<Person> findByCityContainingIgnoreCase(String city);
 
     Optional<Person> findById(Long id);
+
+    void deleteById(Long id);
 }

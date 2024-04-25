@@ -1,5 +1,6 @@
 package se.tronhage.webservicelabb1.service;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -48,5 +49,14 @@ public class PersonService {
             return ResponseEntity.notFound().build();
         }
     }
-
+    @Transactional
+    public ResponseEntity<String> deletePerson(Long id) {
+        Optional<Person> optionalPerson = personRepo.findById(id);
+        if (optionalPerson.isPresent()) {
+            personRepo.deleteById(id);
+            return ResponseEntity.ok().body("Person with id " + id + " deleted successfully");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
