@@ -53,4 +53,10 @@ public class PersonController {
         return ResponseEntity.ok(persons);
     }
 
+    @PutMapping("/rs/update/{id}")
+    public ResponseEntity<?> updatePerson(@PathVariable Long id, @RequestBody Person updatedPerson) {
+        personService.updatePerson(id, updatedPerson);
+        return ResponseEntity.ok().build();
+    }
+
 }
