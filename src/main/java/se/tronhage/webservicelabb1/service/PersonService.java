@@ -27,6 +27,10 @@ public class PersonService {
     public List<Person> searchByAge(int age) {
         return personRepo.findByAge(age);
     }
+    public List<Person> searchById(String id){
+        String idPattern = "%" + id + "%";
+        return personRepo.findByIdContaining(idPattern);
+    }
 
     public List<Person> searchByName(String name) {
         return personRepo.findByNameContainingIgnoreCase(name);

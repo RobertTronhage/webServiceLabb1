@@ -35,6 +35,15 @@ public class PersonController {
         return ResponseEntity.ok(persons);
     }
 
+    @GetMapping("/rs/search/id/{id}")
+    public ResponseEntity<?> searchByAge(@PathVariable String id) {
+        List<Person> persons = personService.searchById(id);
+        if (persons.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("no results found for age: " + id);
+        }
+        return ResponseEntity.ok(persons);
+    }
+
     @GetMapping("/rs/search/name/{name}")
     public ResponseEntity<?> searchByName(@PathVariable String name) {
         List<Person> persons = personService.searchByName(name);
